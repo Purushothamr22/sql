@@ -1,0 +1,65 @@
+CREATE DATABASE PRODUCTS;
+USE PRODUCTS;
+CREATE TABLE Products_INFO (
+    ProductID INT UNIQUE,
+    ProductName VARCHAR(255) NOT NULL,
+    Brand VARCHAR(100),
+    Category VARCHAR(50),
+    Price INT,
+    StockQuantity INT,
+    AverageRating INT,
+    Discount INT
+);
+
+
+
+INSERT INTO Products_INFO VALUES(1, 'RICE', 'RAJVEER', 'BASMATI',300, 30, 4,2);
+INSERT INTO Products_INFO VALUES(2, 'GHEE', 'GRB', 'MILKBASED',400, 2, 5,5);
+INSERT INTO Products_INFO VALUES(3, 'DAL', 'ASOKA', 'GROCERY',100, 4, 2,3);
+INSERT INTO Products_INFO VALUES(4, 'CURD', 'AMUL', 'MILKBASED',20, 4, 7,0);
+INSERT INTO Products_INFO VALUES(5, 'POHA', 'MTR', 'GROCERY',40, 3, 9,0);
+
+ALTER TABLE Products_INFO ADD COLUMN EXPIRE_DATE DATE;
+
+SET SQL_SAFE_UPDATES =0;
+
+UPDATE Products_INFO SET  Price= 700 WHERE ProductID = 1;
+UPDATE Products_INFO SET Discount = 7 WHERE ProductName = 'GHEE';
+UPDATE Products_INFO SET AverageRating = 9 WHERE Category = 'AMUL';
+UPDATE Products_INFO SET EXPIRE_DATE = '2024-03-20' WHERE ProductID = 1;
+UPDATE Products_INFO SET EXPIRE_DATE = '2024-03-21' WHERE ProductID = 2;
+UPDATE Products_INFO SET EXPIRE_DATE = '2024-03-22' WHERE ProductID = 3;
+UPDATE Products_INFO SET EXPIRE_DATE = '2024-03-23' WHERE ProductID = 4;
+UPDATE Products_INFO SET EXPIRE_DATE = '2024-03-24' WHERE ProductID = 5;
+
+SELECT * FROM Products_INFO;
+
+SELECT MIN(Price) FROM Products_INFO;
+SELECT MAX(Price) FROM Products_INFO;
+SELECT COUNT(ProductName) FROM Products_INFO;
+SELECT SUM(Price) FROM Products_INFO;
+SELECT MAX(Price) FROM Products_INFO;
+SELECT COUNT(*) FROM Products_INFO;
+
+SELECT * FROM Products_INFO WHERE ProductName IN ('GHEE','DAL');
+SELECT * FROM Products_INFO WHERE NOT StockQuantity= 2;
+SELECT * FROM Products_INFO WHERE NOT StockQuantity BETWEEN 2 AND 4;
+SELECT * FROM Products_INFO WHERE ProductName LIKE 'G%';
+SELECT * FROM Products_INFO WHERE ProductName LIKE '%L';
+SELECT * FROM Products_INFO WHERE ProductName LIKE '%A%';
+SELECT * FROM Products_INFO WHERE ProductName LIKE '_A_';
+SELECT * FROM Products_INFO WHERE Category = 'GROCERY' OR Category = 'MILKBASED';
+
+SELECT * FROM Products_INFO WHERE Price < 100;
+SELECT * FROM Products_INFO WHERE Price > 200;
+SELECT * FROM Products_INFO WHERE Price <= 100;
+SELECT * FROM Products_INFO WHERE Price >= 20;
+SELECT * FROM Products_INFO WHERE Price <> 300;
+
+
+
+
+
+
+
+
