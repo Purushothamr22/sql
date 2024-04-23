@@ -55,6 +55,10 @@ SELECT * FROM Products_INFO WHERE Price > 200;
 SELECT * FROM Products_INFO WHERE Price <= 100;
 SELECT * FROM Products_INFO WHERE Price >= 20;
 SELECT * FROM Products_INFO WHERE Price <> 300;
+SELECT DISTINCT ProductID FROM Products_INFO;
+SELECT * FROM Products_INFO ORDER BY ProductID;
+SELECT * FROM Products_INFO ORDER BY ProductID DESC;
+SELECT * FROM Products_INFO LIMIT 2;
 
 
 
